@@ -3,34 +3,32 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("What is your Grade?");
-        string userInput = Console.ReadLine();
-        int grade = int.Parse(userInput);
-        string letter_grade = "";
-        if (grade >= 90 )
-        {
-            letter_grade = "A";
-        }
-        else if (grade >= 80 )
-        {
-            letter_grade = "B";
-        }
-        else if (grade >= 70 )
-        {
-            letter_grade = "C";
-        }
-        else if (grade >= 60 )
-        {
-            letter_grade = "D";
-        }
-        else if (grade <  60 )
-        {
-            letter_grade = "E";;
-        };
-        Console.WriteLine($"Your grade is {letter_grade}!");
-        if (grade < 70 ){
-            Console.WriteLine("You are repproved, please try again");
+    {  
+        bool isEqual = false;
+        Console.WriteLine("What is the magic number?");
+        string number1 = Console.ReadLine();
+        int magicNumber = int.Parse(number1);
+        while (isEqual == false)
+        {   
+            Console.WriteLine("What is your guess?");
+            string number2 = Console.ReadLine();
+            int guessNumber = int.Parse(number2);
+        
+            if(magicNumber < guessNumber){
+                Console.WriteLine("Less");
+            }
+            else if(magicNumber > guessNumber){
+                Console.WriteLine("Higher");
+            }
+            else{
+                Console.WriteLine("You guessed it!");
+                isEqual = true;
+            
         }
     }
+        
+        
+
+
+    }   
 }
