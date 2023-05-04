@@ -1,0 +1,7 @@
+Explain the meaning of Version Control
+Version control is used in the development because make possible to save the code in many version and make it secure to update, because is possible to return the old version, is a form to work better how team and make the development process more professional
+The benefit is the security to save the code in many version in the cloud, also is possible to merge codes, which make it possible to work with how the team on the same project.
+The example is one team working on the same project, one person doing the home page, and the other the contact page, when they saved the code,  will be placed in the same repository to be reviewed, so whoever created the home page can check the code of the contact page and make changes and update the code, If something didn't works, he can return to the last version that was uploaded before. 
+One exemple of code is 
+git clone
+This command can be used to clone a repository to my computer.
