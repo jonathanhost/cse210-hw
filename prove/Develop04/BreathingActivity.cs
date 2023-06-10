@@ -7,7 +7,7 @@ public class BreathingActivity : Activity {
         
     }
 
-  public void RunProgram(int seconds)
+  public void RunBreathingActivity(int seconds)
   {
       timer.DisplayReady();
       Console.WriteLine("");

@@ -24,7 +24,7 @@ class Program
                     Console.WriteLine(breathactivity.timer.RequestTime());
                     seconds_text = Console.ReadLine();
                     seconds = int.Parse(seconds_text);
-                    breathactivity.RunProgram(seconds);
+                    breathactivity.RunBreathingActivity(seconds);
                     counter++;
                     break;
                 case "2":
@@ -36,7 +36,7 @@ class Program
                     Console.WriteLine(reeflectionactivity.timer.RequestTime());
                     seconds_text = Console.ReadLine();
                     seconds = int.Parse(seconds_text);
-                    reeflectionactivity.RunProgram(seconds);
+                    reeflectionactivity.RunReflectionActivity(seconds);
                     counter++;
                     break;
                 case "3":
@@ -48,12 +48,12 @@ class Program
                     Console.WriteLine(listingactivity.timer.RequestTime());
                     seconds_text = Console.ReadLine();
                     seconds = int.Parse(seconds_text);
-                    listingactivity.RunProgram(seconds);
+                    listingactivity.RunListingActivity(seconds);
                     counter++;
                     break;
                 case "4":
                     Console.Clear();
-                    Console.WriteLine($"You Finished {counter} activities");
+                    Console.WriteLine($"> You finished {counter} activities <");
                     activity.timer.DisplayLoad();
                     Console.WriteLine("Bye Bye");
                     System.Environment.Exit(0); 

@@ -29,7 +29,7 @@ public class ReflectionActivity: Activity {
         timer.DisplayCount(5);
         Console.Clear();
     }
-    public void RunProgram(int seconds)
+    public void RunReflectionActivity(int seconds)
     {
         timer.DisplayReady();
         Intodruce();

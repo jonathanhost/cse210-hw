@@ -30,7 +30,6 @@ public class WaitingTimer {
   {
    return "How long, in seconds, would you like for your session?";
   }
-
   public void DisplayCount(int seconds)
   {
     for(int i = seconds; i > 0; i--)

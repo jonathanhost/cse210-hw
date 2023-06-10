@@ -18,7 +18,7 @@ public class ListingActivity : Activity {
         Console.Write("You may begin in:");
         timer.DisplayCount(5);
     }
-    public void RunProgram(int seconds)
+    public void RunListingActivity(int seconds)
     {
         timer.DisplayReady();
         Introduce();
