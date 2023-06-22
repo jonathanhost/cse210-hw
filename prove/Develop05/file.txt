@@ -1,0 +1,4 @@
+100
+SimpleGoal:arrumar a luz,esta muito quente,50,True
+EternalGoal:eternalgoal,minha goal,60
+ChecklistGoal:minha meta,meta nova,20,500,3,0
