@@ -1,0 +1,4 @@
+1750-Newjojo
+SimpleGoal:mynewgoal,new simple goal,500,True
+EternalGoal:new eternal goal,my eternal goal,50
+ChecklistGoal:go to the temple,i need to go to the temple,1050,1000,3,3

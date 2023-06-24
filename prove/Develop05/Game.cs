@@ -1,7 +1,7 @@
 public class Game  
 { 
   private User _user = new User();
-  HandleFile _handleFile = new HandleFile();
+  private HandleFile _handleFile = new HandleFile();
   private string _userChoice = "";
   public void DisplayMenu()
   {  
@@ -57,11 +57,11 @@ public class Game
   public void CreateEternalGoal()
   { 
     Console.Clear();
-    Console.WriteLine("What is the name of your goal? ");
+    Console.Write("What is the name of your goal? ");
     string name = Console.ReadLine();
-    Console.WriteLine("What is a short description of it? ");
+    Console.Write("What is a short description of it? ");
     string description = Console.ReadLine();
-    Console.WriteLine("Which  is the amount of points associeated with this goal? ");
+    Console.Write("Which  is the amount of points associeated with this goal? ");
     string points_string = Console.ReadLine();
     int points = int.Parse(points_string);
     EternalGoal _eternalGoal = new EternalGoal(name,description,points);
@@ -70,17 +70,17 @@ public class Game
   public void CreateCheckListGoal()
   {
     Console.Clear();
-    Console.WriteLine("What is the name of your goal? ");
+    Console.Write("What is the name of your goal? ");
     string name = Console.ReadLine();
-    Console.WriteLine("What is a short description of it? ");
+    Console.Write("What is a short description of it? ");
     string description = Console.ReadLine();
-    Console.WriteLine("Which  is the amount of points associeated with this goal? ");
+    Console.Write("Which is the amount of points associeated with this goal? ");
     string points_string = Console.ReadLine();
     int points = int.Parse(points_string);
-    Console.WriteLine("How many tmes does this goal need to be accomplished for a bonus? ");
+    Console.Write("How many times does this goal need to be accomplished for a bonus? ");
     string bonus_time_string = Console.ReadLine();
     int bonus_time = int.Parse(bonus_time_string);
-    Console.WriteLine("What is the bonus for accomplishing it that many times? ");
+    Console.Write("What is the bonus for accomplishing it that many times? ");
     string bonus_string = Console.ReadLine();
     int bonus = int.Parse(bonus_string);
     CheckListGoal _checkListGoal = new CheckListGoal(name,description,points,bonus,bonus_time);
@@ -89,11 +89,11 @@ public class Game
   public void CreateSimpleGoal()
   { 
     Console.Clear();
-    Console.WriteLine("What is the name of your goal? ");
+    Console.Write("What is the name of your goal? ");
     string name = Console.ReadLine();
-    Console.WriteLine("What is a short description of it?");
+    Console.Write("What is a short description of it? ");
     string description = Console.ReadLine();
-    Console.WriteLine("Which is the amount of points associeated with this goal?");
+    Console.Write("Which is the amount of points associeated with this goal? ");
     string points_string = Console.ReadLine();
     int points = int.Parse(points_string);
     SimpleGoal _simpleGoal = new SimpleGoal(name,description,points);
@@ -102,9 +102,11 @@ public class Game
   }
   public void DisplayPoints()
   { 
+    Console.WriteLine("");
     Console.WriteLine($"Hello {_user.GetName()}, you have {_user.GetPoints()} points.");
   }
-  public void SetUserChoice(string choice){
+  public void SetUserChoice(string choice)
+  {
     _userChoice = choice;
   }
   public void ListGoals()
@@ -118,14 +120,18 @@ public class Game
   }
   DisplayLoad();
 }
-  public void RecordEvent(){
+  public void RecordEvent()
+  {
+  
     int counter = 1;
+    Console.Clear();
+    Console.WriteLine("List of Goals:\n");
     foreach(Goal goal in _user.GetList())
     {
-      Console.WriteLine($"{counter}.{goal.GetName()}");
+      Console.WriteLine($"{counter}. {goal.GetName()}");
       counter++;
     }
-    Console.WriteLine($"Which goal did you accomplish?");
+    Console.Write($"\nWhich goal did you accomplish? ");
     string complete_string = Console.ReadLine();
     int complete = int.Parse(complete_string);
     CompleteGoal(complete);
@@ -140,8 +146,8 @@ public class Game
       {
         goal.RecordEvent();
         _user.SetPoints(goal.GetPoints());
-        Console.WriteLine($"Congratulations! You have earned {goal.GetPoints()}");
-        Console.WriteLine($"You now have {_user.GetPoints()}");
+        Console.WriteLine($"\nCongratulations! You have earned {goal.GetPoints()}!!");
+        Console.WriteLine($"You now have {_user.GetPoints()} points!\n");
       }
       counter++;
     }

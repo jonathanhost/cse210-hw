@@ -5,9 +5,9 @@ class Program
     static void Main(string[] args)
     {   Game newGame = new Game();
         Console.Clear();
-        Console.WriteLine("Welcome to Eternal Quest");
+        Console.WriteLine("----------------- Welcome to Eternal Quest -----------------\n");
         newGame.DisplayLoad();
-        Console.WriteLine("Please Enter Your name: ");
+        Console.Write("\nPlease Enter Your name: ");
         string username = Console.ReadLine();
         newGame.SetUserName(username);
         Console.Clear();

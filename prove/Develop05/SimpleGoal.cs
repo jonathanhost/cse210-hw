@@ -1,6 +1,6 @@
 public class SimpleGoal : Goal
 {
-protected Boolean _complete = false;
+private Boolean _complete = false;
 public  SimpleGoal(string name, string description, int points): base(name,description,points)
 {
 

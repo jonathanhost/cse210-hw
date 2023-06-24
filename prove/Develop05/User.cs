@@ -1,8 +1,8 @@
 public class User  
 {
-  protected string _name;
-  protected int _points = 0;
- protected List<Goal> _goalList = new List<Goal> {};
+  private string _name;
+  private int _points = 0;
+  private List<Goal> _goalList = new List<Goal> {};
 
  public User(string name, int points)
   {
