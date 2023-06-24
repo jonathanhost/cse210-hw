@@ -4,15 +4,20 @@ public class User
   protected int _points = 0;
  protected List<Goal> _goalList = new List<Goal> {};
 
-  public User(string name)
+ public User(string name, int points)
   {
     _name = name;
+    _points = points;
   }
-
-   public User()
+     public User()
   {
     _name = "Undefined";
   }
+  public string GetName()
+  {
+    return _name;
+  }
+
  public void SetPoints(int points)
  {
       _points+=points;

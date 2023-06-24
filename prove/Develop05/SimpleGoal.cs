@@ -1,11 +1,12 @@
 public class SimpleGoal : Goal
 {
 protected Boolean _complete = false;
-public  SimpleGoal(string name, string description, int points): base(name,description,points){
+public  SimpleGoal(string name, string description, int points): base(name,description,points)
+{
 
 }
-
-public  SimpleGoal(string name, string description, int points, Boolean complete): base(name,description,points){
+public  SimpleGoal(string name, string description, int points, Boolean complete): base(name,description,points)
+{
  _complete = complete;
 }
 

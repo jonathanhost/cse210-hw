@@ -3,9 +3,14 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        Game newGame = new Game();
-
+    {   Game newGame = new Game();
+        Console.Clear();
+        Console.WriteLine("Welcome to Eternal Quest");
+        newGame.DisplayLoad();
+        Console.WriteLine("Please Enter Your name: ");
+        string username = Console.ReadLine();
+        newGame.SetUserName(username);
+        Console.Clear();
         while(newGame.GetChoice() != "quit")
         { 
             newGame.DisplayPoints();

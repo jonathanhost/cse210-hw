@@ -4,7 +4,7 @@ public class HandleFile{
   {
     using (StreamWriter outputFile = new StreamWriter(filename))
     {    
-      outputFile.WriteLine($"{_user.GetPoints()}");
+      outputFile.WriteLine($"{_user.GetPoints()}-{_user.GetName()}");
       foreach (Goal _goal in _goalsList)
       {  
         outputFile.WriteLine(_goal.SaveGoal());
@@ -14,9 +14,11 @@ public class HandleFile{
   public User LoadToFile(String filename)
   {
     string[] lines = System.IO.File.ReadAllLines(filename);
-    User _user = new User();
-    int points = int.Parse(lines[0]);
-    _user.SetPoints(points);
+    
+    string[] user = lines[0].Split("-");
+    int points = int.Parse(user[0]);
+    string userName =user[1];
+    User _user = new User(userName,points);
     foreach (string line in lines.Skip(1))
     {       
       string[] break_line = line.Split(":");

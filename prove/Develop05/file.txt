@@ -1,4 +1,4 @@
-100
-SimpleGoal:arrumar a luz,esta muito quente,50,True
-EternalGoal:eternalgoal,minha goal,60
-ChecklistGoal:minha meta,meta nova,20,500,3,0
+50-Jonathan
+SimpleGoal:My goal,Its a simple goal,50,True
+EternalGoal:My new goal 1,nenenene,20
+ChecklistGoal:new check list goal,30,80,50,3,0
