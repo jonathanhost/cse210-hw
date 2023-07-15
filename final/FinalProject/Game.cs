@@ -1,9 +1,9 @@
 public class Game
 {
   protected CharacterCreator _creator = new CharacterCreator(){};
-  protected Character _user = new Character(){};
   private List<Enemie> _enemies = new List<Enemie>{};
   protected World _word = new World();
+  protected Store _store = new Store();
   
   public void DisplayLoad()
   {
@@ -23,25 +23,28 @@ public class Game
       Console.Write("\b \b");
    }
   }
-  public void DiplayWelCome(){
+  public void DiplayWelCome()
+  {
     Console.Clear();
     Console.WriteLine($"\n\n\n\n O\n/|\\/\n/ \\\n======== Welcome to the RPG GAME");
   }
-  public void DisplayMenu(){
+  public void DisplayMenu()
+  {
     Console.Clear();
     Console.WriteLine($"RPG GAME MENU\n\n");
     Console.WriteLine($"Select the option\n");
-    Console.WriteLine($"1. Start \n2. Settings\n3. Quit");
+    Console.WriteLine($"1. Start\n2. Quit");
   }
-  public void DisplayAnimation(){
+  public void DisplayAnimation()
+  {
       Console.Write("");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write(".");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write(".");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write(".");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
   }
   public void DisplayIntroduction()
   {       Console.Clear();
@@ -58,9 +61,18 @@ public class Game
           Console.Clear();
 
   }
-  public void Start(){
+  public void Displaycontent()
+  {
+    Console.Clear();
+    Console.WriteLine($"Hello {_creator.GetName()}!\n");
+    Console.WriteLine($"You are a {_creator.GetClass()}!");
+    Console.WriteLine(_creator.GetDescription());
+    Console.WriteLine("\n\n\n\n\nPress Enter to Continue!"); 
+  }
+  public void Start()
+  {
     CreatorMenu();
-    displaycontent();
+    Displaycontent();
     Console.ReadLine();
     DisplayIntroduction();
     _word.Stage1();
@@ -71,17 +83,38 @@ public class Game
     _enemies = _word.GetEnemies();
     Fight(_word.GetEnemies(),_creator);
     Console.ReadLine();
-
-   
+     _word.Stage3();
+    _enemies = _word.GetEnemies();
+    Fight(_word.GetEnemies(),_creator);
+    Console.ReadLine();
+     _word.Stage4();
+    _enemies = _word.GetEnemies();
+    Fight(_word.GetEnemies(),_creator);
+    Console.ReadLine();
+     _word.Stage5();
+    _enemies = _word.GetEnemies();
+    Fight(_word.GetEnemies(),_creator);
+    Console.ReadLine();
+    GameEnd();
   }
-  public void CreatorMenu(){
+  public void GameEnd()
+  {
+    Console.Clear();
+    Console.WriteLine("Congratulations You Finished the Game!!!!!!!!!!!");
+    Console.WriteLine("Now, the hero unleashes their true potential and, with courage and determination, defeats the villain, restoring peace and harmony to the realm.");
+    Console.WriteLine("END...");
+    DisplayLoad();
+  }
+  public void CreatorMenu()
+  {
     Console.Clear();
     Console.WriteLine($"\n\nSelect the Character Class ");
     Console.WriteLine($"1. Knight \n2. Mage\n3. Archer\n4. Paladin\n5. Bard");
     string option = Console.ReadLine();
     CreateCharacter(option);
   }
-  public void CreateCharacter(string option){
+  public void CreateCharacter(string option)
+  {
     string name = UserName();
     if (option == "1")
     {
@@ -104,29 +137,95 @@ public class Game
       _creator.CreateBard(name);
     }
   }
-  public string UserName(){
+  public string UserName()
+  {
     Console.Clear();
     Console.WriteLine($"Select the Character name: ");
     string name = Console.ReadLine();
     return name;
   }
-  public void displaycontent(){
+  public void RunMenu()
+  {
+    string answer = "";
+    while(answer != "3")
+    {
+      Console.WriteLine("1. Store\n2. Rest\n3. Return to Battle");
+      answer = Console.ReadLine();
+    if(answer == "1")
+    {
+      OpenStore();
+    }
+    else if (answer == "2")
+    {
+      Rest();
+    }
+    }
+   
 
-    Console.Clear();
-    Console.WriteLine($"Hello {_creator.GetName()}!\n");
-    Console.WriteLine($"You are a {_creator.GetClass()}!");
-    Console.WriteLine(_creator.GetDescription());
-    Console.WriteLine("\n\n\n\n\nPress Enter to Continue!");
-    
   }
-  public void GameOver(){
+  public void Rest()
+  {
+    Console.WriteLine("1. Rest 12 Hours ( 5 coins )\n2. Rest 24 Hours ( 10 coins )");
+    string answer = Console.ReadLine();
+    if(answer == "1")
+    {
+      if(_creator.GetMoney() > 5)
+      {
+        _creator.SetMoney(-5);
+        _creator.SetlifePoints(15);
+        Console.WriteLine("You rested 12 hours, you recovery 15 life points");
+      }
+      else
+      {
+        Console.WriteLine("You don't have sufficient coins");
+      }
+    }
+    else if (answer == "2")
+    {
+      if(_creator.GetMoney() > 10)
+      {
+        _creator.SetMoney(-10);
+        _creator.SetlifePoints(35);
+        Console.WriteLine("You rested 24 hours, you recovery 35 life points");
+      }
+      else
+      {
+        Console.WriteLine("You don't have sufficient coins");
+      }
+    }
+  }
+  public void OpenStore()
+  {
+    Console.WriteLine("1. Buy Itens\n2. Quit");
+    string answer = Console.ReadLine();
+    if(answer == "1")
+    {
+    _store.DisplayList();
+    string choice = Console.ReadLine();
+    Item newitem = _store.BuyItem(int.Parse(choice));
+      if(_creator.GetMoney() >= newitem.Getprice())
+      {
+        _creator.EquipItem(newitem);
+        _creator.SetMoney(-newitem.Getprice());
+      }
+      else
+      {
+        Console.WriteLine($"Insuficient Founds, you have {_creator.GetMoney()}");
+      }
+    }
+    else
+    {
+    }
+  }
+  public void GameOver()
+  {
     Console.WriteLine("GAME OVER");
     Console.Write("You Was Defeated");
     DisplayAnimation();
     Console.WriteLine("");
     System.Environment.Exit(0);
   }
-public void Fight(List<Enemie> enemies , CharacterCreator hero)
+  public void Fight(List<Enemie> enemies , CharacterCreator hero)
 {
   Console.WriteLine("The Battle Started!");
   foreach(Enemie enemy in enemies)
@@ -135,7 +234,7 @@ public void Fight(List<Enemie> enemies , CharacterCreator hero)
     {   
         Console.WriteLine();
         Console.WriteLine("Its Your turn:");
-        Console.WriteLine("1. Attack\n2. Run");
+        Console.WriteLine("1. Attack\n2. Options");
         string choice = Console.ReadLine();
         Console.Clear();
         if(choice == "1")
@@ -144,12 +243,15 @@ public void Fight(List<Enemie> enemies , CharacterCreator hero)
         }
         else
         {
-          break;
+          RunMenu();
         }
         if(enemy.IsLive())
         {
-          Console.WriteLine($"It's {enemy.GetName()} turn: ");
+          Console.WriteLine($"It's {enemy.GetName()} turn: \n");
           enemy.Attack(hero);
+        }
+        else{
+          Console.WriteLine($"It's {enemy.GetName()} Defeted");
         }
 
         if(!hero.IsLive())
@@ -158,10 +260,17 @@ public void Fight(List<Enemie> enemies , CharacterCreator hero)
         }
       }
     }
-    Console.WriteLine($"You Won the Battle!\n Press Enter to Continue");
-    Console.ReadLine();
+    BattleWon();
   }
+public void BattleWon(){
+  Console.Clear();
+  Console.WriteLine("Congratulations!!\n");
+  
+  Console.WriteLine("You Won the Battle!\n");
+  _creator.RecieveMoney(); 
+  Console.WriteLine("\nPress Enter to Continue");
+  
 }
-
+}
 
 

@@ -18,9 +18,6 @@ class Program
                     _game.Start();
                     break;
                 case "2":
-                    //newGame.ListGoals();
-                    break;
-                case "3":
                     Console.WriteLine("Bye Bye");
                     System.Environment.Exit(0); 
                     break;
