@@ -144,12 +144,12 @@ public class Game
     string name = Console.ReadLine();
     return name;
   }
-  public void RunMenu()
+  public void OptionMenu()
   {
     string answer = "";
     while(answer != "3")
     {
-      Console.WriteLine("1. Store\n2. Rest\n3. Return to Battle");
+      Console.WriteLine("1. Store\n2. Recovery Life\n3. Return to Battle");
       answer = Console.ReadLine();
     if(answer == "1")
     {
@@ -157,15 +157,15 @@ public class Game
     }
     else if (answer == "2")
     {
-      Rest();
+      RecoveryLife();
     }
     }
    
 
   }
-  public void Rest()
+  public void RecoveryLife()
   {
-    Console.WriteLine("1. Rest 12 Hours ( 5 coins )\n2. Rest 24 Hours ( 10 coins )");
+    Console.WriteLine("1. Simple Potion ( 5 coins )\n2. Great Potion ( 10 coins )");
     string answer = Console.ReadLine();
     if(answer == "1")
     {
@@ -173,7 +173,7 @@ public class Game
       {
         _creator.SetMoney(-5);
         _creator.SetlifePoints(15);
-        Console.WriteLine("You rested 12 hours, you recovery 15 life points");
+        Console.WriteLine("You used the simple Potion, you recieved 15 life points");
       }
       else
       {
@@ -186,7 +186,7 @@ public class Game
       {
         _creator.SetMoney(-10);
         _creator.SetlifePoints(35);
-        Console.WriteLine("You rested 24 hours, you recovery 35 life points");
+        Console.WriteLine("You used the great potion, you recieved 35 life points");
       }
       else
       {
@@ -243,7 +243,7 @@ public class Game
         }
         else
         {
-          RunMenu();
+          OptionMenu();
         }
         if(enemy.IsLive())
         {
