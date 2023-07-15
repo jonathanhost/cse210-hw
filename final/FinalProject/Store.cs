@@ -1,6 +1,6 @@
 public class Store
 {
-  protected List<Item> _itens = new List<Item>{
+  private List<Item> _itens = new List<Item>{
   new Item("Elven Sword",1,3,5),
   new Item("Dragon Shield:",5,2,10),
   new Item("Ebony Bow",2,5,5),
